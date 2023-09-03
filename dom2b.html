@@ -26,42 +26,51 @@
     <script>
       function changeH1() {
         // the colour of first <h1> should turn to red
-            document.querySelector("h1:first-of-type").style.color = "red";
-
+        document.querySelector("h1:first-of-type").style.color = "red";
       }
 
       function changeH3() {
         // the colour of all <h3> should turn to green
-            document.querySelector("h3:first-of-type").style.color = "green";
-
+        document.querySelector("h3:first-of-type").style.color = "green";
       }
 
       function changeH5() {
         // the colour of all <h5> should turn to blue
-            document.querySelector("h5:first-of-type").style.color = "blue";
-
+        document.querySelector("h5:first-of-type").style.color = "blue";
       }
 
       function changeGreen() {
         // all the elements with the class green should change to green
-        document.querySelectorAll(".green").forEach(function(element) {
-  element.style.color = "green";
-});
+        const greenClassElements = document.getElementsByClassName("green");
+        
+        for (let index = 0; index < greenClassElements.length; index++) {
+          const element = greenClassElements[index];
+          if (element) {
+            element.style.color = "green";
+          }
+        }
       }
 
       function changeRed() {
-        // all the elements with the class red should change to 
-        document.querySelectorAll(".red").forEach(function(element) {
-  element.style.color = "red";
-});
+        // all the elements with the class red should change to red
+        const redClassElements = document.getElementsByClassName("red");
+        for (let index = 0; index < redClassElements.length; index++) {
+          const element = redClassElements[index];
+          if (element) {
+            element.style.color = "red";
+          }
+        }
       }
 
       function changeBlue() {
         // all the elements with the class blue should change to blue
-        document.querySelectorAll(".blue").forEach(function(element) {
-  element.style.color = "blue";
-});
-
+        const blueClassElements = document.getElementsByClassName("blue");
+        for (let index = 0; index < blueClassElements.length; index++) {
+          const element = blueClassElements[index];
+          if (element) {
+            element.style.color = "blue";
+          }
+        }
       }
     </script>
   </body>
