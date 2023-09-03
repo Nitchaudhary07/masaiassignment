@@ -14,17 +14,13 @@
 </html>
 
 <script>
-
-  function changeRed(){
+  function changeRed() {
     // change text color of h1 to red
-    document.querySelector("h1:first-of-type").style.color = "red";
-
-    
-
+    document.getElementsByTagName("h1")[0].style.color = "red";
   }
 
-  function changeYellow(){
+  function changeYellow() {
     // change text color of h1 to yellow
-    document.querySelector("h1:first-of-type").style.color = "yellow";
-};
+    document.getElementsByTagName("h1")[0].style.color = "yellow";
+  }
 </script>
