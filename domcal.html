@@ -1,117 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator using javascript - Easy Tutorials</title>
+    <title>Document</title>
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-}
-
-
-.container{
-    width: 100%;
-    height: 100vh;
-    background: #e3f9ff;
+      .keypad{
+        
+    font-size:10px;
+    height: 65px;
+   
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.calculator{
-    background: #3a4452;
-    padding: 20px;
-    border-radius: 10px;
-}
-.calculator form input{
-    border: 0;
-    outline: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1),5px 5px 15px rgba(0, 0, 0, 0.2);
-    background: transparent;
-    font-size: 20px;
-    color: #fff;
-    cursor: pointer;
-    margin: 10px;
-}
+   
+  }
+.tch{
+    background-color: aqua;
+  }
+ // .container{
+    font-size: 10px;
+    height: 65px;
+    display: grid;
+   
+    
+    
+  }
+  #equal{
+    background-color:aqua;
 
-form .display{
+  }
+  #display{
+    font-size: large;
+    color:black;
     display: flex;
-    justify-content: flex-end;
-    margin: 20px 0;
-}
-form .display input{
-    text-align: right;
-    flex: 1;
-    font-size: 45px;
-    box-shadow: none;
-}
-form input.equal{
-    width: 145px;
-}
-
-
-
-form input.operator{
-    color: #33ffd8;
-}
-
-
-
-
-
-
-
-
-
+    text-align: center;
+  }
     </style>
 </head>
 <body>
+    <div>
 
-<div class="container">
-  <div class="calculator">
-    <form>
-      <div class="display">
-        <input type="text" name="display">
-      </div>
-      <div>
-        <input type="button" value="AC" onclick="display.value = '' " class="operator">
-        <input type="button" value="DE" onclick="display.value =  display.value.toString().slice(0,-1)" class="operator">
-        <input type="button" value="." onclick="display.value += '.' " class="operator">
-        <input type="button" value="/" onclick="display.value += '/' " class="operator">
-      </div>
-      <div>
-        <input type="button" value="7" onclick="display.value += '7' ">
-        <input type="button" value="8" onclick="display.value += '8' ">
-        <input type="button" value="9" onclick="display.value += '9' ">
-        <input type="button" value="" onclick="display.value += '' " class="operator">
-      </div>
-      <div>
-        <input type="button" value="4" onclick="display.value += '4' ">
-        <input type="button" value="5" onclick="display.value += '5' ">
-        <input type="button" value="6" onclick="display.value += '6' ">
-        <input type="button" value="-" onclick="display.value += '-' " class="operator">
-      </div>
-      <div>
-        <input type="button" value="1" onclick="display.value += '1' ">
-        <input type="button" value="2" onclick="display.value += '2' ">
-        <input type="button" value="3" onclick="display.value += '3' ">
-        <input type="button" value="+" onclick="display.value += '+' " class="operator">
-      </div>
-      <div>
-        <input type="button" value="00" onclick="display.value += '00' ">
-        <input type="button" value="0" onclick="display.value += '0' ">
-        <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal operator">
-       
-      </div>
-    </form>
-  </div>
-</div>
+        <div class="keypad">
+            <button  class="tch">1</button>
+            <button  class="tch">2</button>
+            <button  class="tch">3</button>
+            <button  class="tch">4</button>
+            <button  class="tch">5</button>
+            <button  class="tch">6</button>
+            <button  class="tch">7</button>
+            <button  class="tch">8</button>
+            <button  class="tch">9</button>
+            <button  class="tch">0</button>
+            
+  
+        </div>
+
+        <div class="container">
+            <button  class="tch">+</button>
+            <button  class="tch">-</button>
+            <button class="tch" >*</button>
+            <button  class="tch">/</button>
+        </div>
+
+        <button id="equal">=</button>
+        <!-- <button id="clear">Clear</button> -->
+        <h1 id="display"></h1>
 
 
+    </div>
 </body>
+    <script>
+        let display = document.getElementById("display")
+        let keypad = document.querySelectorAll(".keypad > button")
+        let operator = document.querySelectorAll(".container > button")
+        let equal = document.getElementById("equal");
+
+        let first = "";
+        let second = ""
+        let flag = true;
+        let myoperator = ""
+
+        for(let i=0;i<keypad.length;i++){
+            keypad[i].addEventListener("click",function(){
+                if(flag==true){
+                    first += keypad[i].innerText;
+                    display.innerText = first;
+                }
+                else{
+                    second += keypad[i].innerText;
+                    display.innerText = second;
+                }
+            })
+        }
+
+        for(let i=0;i<operator.length;i++){
+            operator[i].addEventListener("click",function(){
+                flag = false;
+                myoperator = operator[i].innerText;
+            })
+        }
+
+        equal.addEventListener("click",function(){
+            display.innerText = myfun(first,second,myoperator);
+        })
+
+        function myfun(first,second,operator){
+            if(operator == "+"){
+                return Number(first) + Number(second);
+            }
+            else if(operator == "-"){
+                return Number(first) - Number(second);
+            }
+            else if(operator == "*"){
+                return Number(first) * Number(second);
+            }
+            else if(operator == "/"){
+                return Number(first) / Number(second);
+            }
+        }
+
+        // let clear = document.getElementById("clear");
+        // clear.addEventListener("click",function(){
+        //     display.innerText = ""
+        // })
+
+    </script>
 </html>

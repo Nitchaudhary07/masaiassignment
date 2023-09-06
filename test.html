@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Masai Calculator</title>
+                
+    </head>
+    <style>
+    
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator{
+    max-width:320px;
+    background: #eee;
+}
+.calculator-buttons{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    border:0;
+}
+.calc-numbers{
+    font-family: 'Space Mono', serif;
+    background: black;
+    color: white;
+    font-size: 2em;
+    border:0;
+    padding: 0.3em;
+    text-align: right;
+    width: 100%;
+    height: 100px;
+}
+.span-2{
+    grid-column: span 2;
+}
+.span-3{
+    grid-column: span 3;
+}
+.btn{
+    font-size:1em;
+    height: 65px;
+    border:1px solid black;
+}
+.btn:hover{
+    background: #fff;
+}
+.orange{
+    background-color:orange;
+}
+
+    </style>
+    <body>
+
+        <div class="container">
+
+            <div class="calculator">
+
+                <input type="text" class="calc-numbers" value="0">
+
+                <div class="calculator-buttons">
+                    <button class="btn">1</button>
+                    
+                    <button class="btn">2</button>
+                    <button class="btn">3</button>
+                    <button class="btn">+</button>
+                    <button class="btn">4</button>
+                    <button class="btn">5</button>
+                    <button class="btn">6</button>
+                    <button class="btn">-</button>
+                    <button class="btn">7</button>
+                    <button class="btn">8</button>
+                    <button class="btn">9</button>
+                    <button class="btn">x</button>
+                    <button class="btn">C</button>
+                    <button class="btn">0</button>
+                    <button class="btn">=</button>
+                    <button class="btn">/</button>
+                    
+                </div>
+
+            </div>
+
+        </div>
+        
+    </body>
+    <script>
+              let display = document.getElementById("display")
+        let keypad = document.querySelectorAll(".keypad > button")
+        let operator = document.querySelectorAll(".container > button")
+        let equal = document.getElementById("equal");
+
+        let first = "";
+        let second = ""
+        let flag = true;
+        let myoperator = ""
+
+        for(let i=0;i<keypad.length;i++){
+            keypad[i].addEventListener("click",function(){
+                if(flag==true){
+                    first += keypad[i].innerText;
+                    display.innerText = first;
+                }
+                else{
+                    second += keypad[i].innerText;
+                    display.innerText = second;
+                }
+            })
+        }
+
+        for(let i=0;i<operator.length;i++){
+            operator[i].addEventListener("click",function(){
+                flag = false;
+                myoperator = operator[i].innerText;
+            })
+        }
+
+        equal.addEventListener("click",function(){
+            display.innerText = myfun(first,second,myoperator);
+        })
+
+        function myfun(first,second,operator){
+            if(operator == "+"){
+                return Number(first) + Number(second);
+            }
+            else if(operator == "-"){
+                return Number(first) - Number(second);
+            }
+            else if(operator == "*"){
+                return Number(first) * Number(second);
+            }
+            else if(operator == "/"){
+                return Number(first) / Number(second);
+            }
+        }
+    </script>
+</html>
