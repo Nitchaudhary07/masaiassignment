@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BMI Calculator</title>
     <style>
-        *{
-            background-color: yellow;
-            color: blueviolet;
-        }
-        h1{
-            color: olivedrab;
-        }
+      * {
+        background-color: yellow;
+        color: blueviolet;
+      }
+      h1 {
+        color: olivedrab;
+      }
     </style>
   </head>
   <body>
@@ -33,33 +33,30 @@
     let weight = document.getElementById("weight");
     let bmival = document.getElementById("bmival");
     let obs = document.getElementById("obs");
-    function myfun(){
-            let val= ""
-            let w = (weight.value);
-            let h = (height.value)
-            let bmi = w / (h/100 * h/100);
-            bmival.innerText = Math.floor(bmi);
+    function myfun() {
+      let val = "";
+      let w = weight.value;
+      let h = height.value;
+      let bmi = w / (((h / 100) * h) / 100);
+      bmival.innerText = Math.floor(bmi);
 
-            if(bmi <= 18.4){
-                val = "UnderWeigt";
-            }
-            else if(bmi >= 18.5 && bmi <= 24.9){
-                val = "Normal";
-            }
-            else if (bmi >= 25 && bmi <= 29.9){
-                val = "Overweigt"
-            }
-            else if ( bmi >= 30){
-                val = "Obsese"
-            }
-            obs.innerText = val;
-        }
+      if (bmi <= 18.4) {
+        val = "UnderWeigt";
+      } else if (bmi >= 18.5 && bmi <= 24.9) {
+        val = "Normal";
+      } else if (bmi >= 25 && bmi <= 29.9) {
+        val = "Overweigt";
+      } else if (bmi >= 30) {
+        val = "Obsese";
+      }
+      obs.innerText = val;
+    }
 
-        function clr(){
-            height.value=""
-            weight.value=""
-            bmival.innerText= "00"
-            obs.innerText= "--"
-        }
+    function clr() {
+      height.value = "";
+      weight.value = "";
+      bmival.innerText = "00";
+      obs.innerText = "--";
+    }
   </script>
 </html>
